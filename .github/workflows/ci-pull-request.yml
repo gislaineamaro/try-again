@@ -6,8 +6,35 @@ on:
       - main # make a test on the main branch
   
 jobs:
-  build-and-cache-modules: 
+  running-test:
     runs-on: ubuntu-latest # GitHub-hosted runner with ubunto virtual machine
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js\
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run tests
+        run: yarn test
+      
+      - name: build project
+        run: yarn 
+        
+  running-lint:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -27,22 +54,6 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-  running-test:
-    runs-on: ubuntu-latest # GitHub-hosted runner with ubunto virtual machine
-    needs: build-and-cache-modules
-
-    steps:
-      - name: Run tests
-        run: yarn test
-      
-      - name: build project
-        run: yarn 
-        
-  running-lint:
-    runs-on: ubuntu-latest
-    needs: build-and-cache-modules
-
-    steps:
       - name: run lint
         run: yarn lint
 
