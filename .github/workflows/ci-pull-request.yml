@@ -6,7 +6,7 @@ on:
       - main
   
 jobs:
-  build-and-test:
+  running-test:
     runs-on: ubuntu-latest # GitHub-hosted runner with ubunto virtual machine
 
     steps:
@@ -23,8 +23,6 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-          ${{ runner.os}}-node-
       
       - name: Install dependencies
         run: yarn install
@@ -52,8 +50,6 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-          ${{ runner.os}}-node-
 
       - name: run lint
         run: yarn lint
