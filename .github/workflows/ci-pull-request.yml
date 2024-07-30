@@ -3,7 +3,7 @@ name: CI - validate PR
 on:
   pull_request:
     branches:
-      - main
+      - main # make a test on the main branch
   
 jobs:
   running-test:
