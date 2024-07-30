@@ -51,6 +51,9 @@ jobs:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
+      - name: Install dependencies
+        run: yarn install
+
       - name: run lint
         run: yarn lint
 
