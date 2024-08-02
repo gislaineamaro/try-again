@@ -3,7 +3,7 @@ name: teste-CI
 #trigger
 on:
   pull_request:
-  branches:
+    branches:
       - main
 jobs:
  #declarar etapas , passo a passo do jobs
