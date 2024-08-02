@@ -1,59 +1,42 @@
-name: CI - validate PR
+name: teste-CI
 
+#trigger
 on:
   pull_request:
-    branches:
+  branches:
       - main
-  
 jobs:
-  running-test:
-    runs-on: ubuntu-latest # GitHub-hosted runner with ubunto virtual machine
-
+ #declarar etapas , passo a passo do jobs
+ run-tests:
+    runs-on: ubuntu-latest #maquina virtual
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2 #nativo do github
 
-      - name: Set up Node.js\
-        uses: actions/setup-node@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2  #nativo do github
         with:
           node-version: '18'
 
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      
-      - name: Install dependencies
-        run: yarn install
+      - name: Install dependencies  
+        run: yarn
 
       - name: Run tests
         run: yarn test
-      
-      - name: build project
-        run: yarn 
-        
-  running-lint:
-    runs-on: ubuntu-latest
 
+ run-lint:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '18'
 
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        run: yarn
 
-      - name: run lint
+      - name: Run lint
         run: yarn lint
-
-      
-
-      
