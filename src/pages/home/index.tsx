@@ -1,11 +1,9 @@
-import BaseLayout from '../../components/BaseLayout';
+import BaseLayout from '@/components/BaseLayout';
 
-const Home = () => {
+export const Home = () => {
   return (
     <BaseLayout>
       <h1>Home</h1>
     </BaseLayout>
   );
 };
-
-export default Home;

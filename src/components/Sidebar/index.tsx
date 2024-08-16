@@ -1,6 +1,6 @@
 import logo from '../../assets/images/purple-logo.svg';
 
-const Sidebar = () => {
+export const Sidebar = () => {
   return (
     <aside className="sidebar-container">
       <img className="sidebar-logo" src={logo} />
@@ -18,5 +18,3 @@ const Sidebar = () => {
     </aside>
   );
 };
-
-export default Sidebar;

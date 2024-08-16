@@ -1,4 +1,5 @@
-import Sidebar from '../Sidebar';
+import { Sidebar } from '../Sidebar';
+
 import './BaseLayout.scss';
 
 interface IBaseLayout {
