@@ -1,0 +1,12 @@
+.base-layout-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+
+  .main-content-container {
+    width: 100%;
+    padding-left: 1rem;
+    padding-top: 2.5rem;
+    background-color:  #F5F5F5;
+  }
+}

@@ -1,6 +1,6 @@
 import { Sidebar } from '../Sidebar';
 
-import './BaseLayout.scss';
+import './styles.scss';
 
 interface IBaseLayout {
   children: React.ReactNode | React.ReactNode[];
@@ -11,7 +11,7 @@ const BaseLayout = ({ children }: IBaseLayout) => {
     <div className="base-layout-container">
       <Sidebar />
 
-      <main>{children}</main>
+      <main className='main-content-container'>{children}</main>
     </div>
   );
 };
