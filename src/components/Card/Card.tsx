@@ -9,7 +9,8 @@ interface ICardProps {
 const Card = ({ title, description, authorName }: ICardProps) => (
   <div>
     <h1 data-testid="card-title">{title}</h1>
-    <p data-testid="card-description">{description}</p>
+    <span>teste</span>
+    <p data-testid="card-details">{description}</p>
 
     <span>{authorName}</span>
   </div>
